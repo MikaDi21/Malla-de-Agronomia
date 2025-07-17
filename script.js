@@ -1,4 +1,4 @@
-// Datos completos: cursos organizados por ciclos con requisitos
+// Datos completos organizados por ciclos
 const ciclos = {
     "Ciclo 1": [
         { nombre: "Análisis Matemático I", requisitos: [] },
@@ -81,15 +81,16 @@ const ciclos = {
     ]
 };
 
-// Estado de cada curso (aprobado o no)
+// Pega aquí la lista de cursos completa como en el código anterior
+
 const estadoCursos = {};
 
-// Guarda el estado actual en LocalStorage
+// Guardar en LocalStorage
 function guardarEstado() {
     localStorage.setItem('estadoCursos', JSON.stringify(estadoCursos));
 }
 
-// Carga el estado desde LocalStorage
+// Cargar desde LocalStorage
 function cargarEstado() {
     const data = localStorage.getItem('estadoCursos');
     if (data) {
@@ -97,7 +98,7 @@ function cargarEstado() {
     }
 }
 
-// Dibuja toda la malla curricular
+// Renderizar la malla curricular
 function renderMalla() {
     const contenedor = document.getElementById('malla');
     contenedor.innerHTML = '';
@@ -141,7 +142,23 @@ function renderMalla() {
     }
 }
 
-// Al cargar la página
+// Reiniciar progreso
+function reiniciarProgreso() {
+    localStorage.removeItem('estadoCursos');
+    for (const ciclo of Object.values(ciclos)) {
+        ciclo.forEach(curso => {
+            estadoCursos[curso.nombre] = false;
+        });
+    }
+    guardarEstado();
+    renderMalla();
+    window.scrollTo(0, 0);
+}
+
+// Eventos
+document.getElementById('reiniciar').onclick = reiniciarProgreso;
+
+// Iniciar
 cargarEstado();
 window.scrollTo(0, 0);
 renderMalla();

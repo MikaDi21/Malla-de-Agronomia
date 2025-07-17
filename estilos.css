@@ -1,3 +1,4 @@
+/* Estilo general */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -11,15 +12,16 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Contenedor principal de los ciclos */
+/* Contenedor principal de los ciclos (columnas) */
 .contenedor-ciclos {
     display: flex;
     justify-content: center;
     gap: 20px;
     overflow-x: auto;
+    padding-bottom: 20px;
 }
 
-/* Columna de cada ciclo */
+/* Cada columna corresponde a un ciclo */
 .ciclo {
     background-color: #f0fdf0;
     border: 2px solid #b2d8b2;
@@ -35,7 +37,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Cursos dentro de cada ciclo */
+/* Estilo de cada curso */
 .curso {
     background-color: #e6f5e6;
     border: 2px solid #9ccc9c;

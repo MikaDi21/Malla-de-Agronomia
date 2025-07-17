@@ -1,3 +1,4 @@
+/* Estilo general */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -11,6 +12,7 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Contenedor de la malla curricular */
 #malla {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -18,6 +20,7 @@ h1 {
     justify-items: center;
 }
 
+/* Cuadro de cada curso */
 .curso {
     background-color: #e6f5e6;
     border: 2px solid #9ccc9c;
@@ -41,17 +44,20 @@ h1 {
     background-color: #80d480;
 }
 
+/* Estado cuando un curso está aprobado */
 .curso.aprobado {
     background-color: #b8e6b8;
     border-color: #66bb66;
     transform: scale(1.05);
 }
 
+/* Estado cuando un curso está bloqueado */
 .curso.bloqueado {
     opacity: 0.5;
     pointer-events: none;
 }
 
+/* Nombre del curso */
 .curso .nombre {
     font-weight: bold;
     font-size: 14px;

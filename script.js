@@ -81,10 +81,23 @@ const ciclos = {
     ]
 };
 
-// Estado de cursos
+// Estado del progreso
 const estadoCursos = {};
 
-// Función para renderizar la malla curricular por ciclos
+// Guardar progreso en LocalStorage
+function guardarEstado() {
+    localStorage.setItem('estadoCursos', JSON.stringify(estadoCursos));
+}
+
+// Cargar progreso desde LocalStorage
+function cargarEstado() {
+    const data = localStorage.getItem('estadoCursos');
+    if (data) {
+        Object.assign(estadoCursos, JSON.parse(data));
+    }
+}
+
+// Renderiza la malla curricular
 function renderMalla() {
     const contenedor = document.getElementById('malla');
     contenedor.innerHTML = '';
@@ -115,6 +128,7 @@ function renderMalla() {
             boton.disabled = !requisitosCumplidos && !aprobado;
             boton.onclick = () => {
                 estadoCursos[curso.nombre] = true;
+                guardarEstado();
                 renderMalla();
             };
 
@@ -127,5 +141,6 @@ function renderMalla() {
     }
 }
 
-// Renderizar la malla al cargar la página
+// Ejecutar al cargar
+cargarEstado();
 renderMalla();

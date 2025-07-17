@@ -1,4 +1,4 @@
-// Definición de todos los cursos organizados por ciclos con sus respectivos requisitos
+// Datos completos: cursos organizados por ciclos con requisitos
 const ciclos = {
     "Ciclo 1": [
         { nombre: "Análisis Matemático I", requisitos: [] },
@@ -81,15 +81,15 @@ const ciclos = {
     ]
 };
 
-// Estado del progreso
+// Estado de cada curso (aprobado o no)
 const estadoCursos = {};
 
-// Guardar progreso en LocalStorage
+// Guarda el estado actual en LocalStorage
 function guardarEstado() {
     localStorage.setItem('estadoCursos', JSON.stringify(estadoCursos));
 }
 
-// Cargar progreso desde LocalStorage
+// Carga el estado desde LocalStorage
 function cargarEstado() {
     const data = localStorage.getItem('estadoCursos');
     if (data) {
@@ -97,7 +97,7 @@ function cargarEstado() {
     }
 }
 
-// Renderiza la malla curricular
+// Dibuja toda la malla curricular
 function renderMalla() {
     const contenedor = document.getElementById('malla');
     contenedor.innerHTML = '';
@@ -141,6 +141,7 @@ function renderMalla() {
     }
 }
 
-// Ejecutar al cargar
+// Al cargar la página
 cargarEstado();
+window.scrollTo(0, 0);
 renderMalla();
